@@ -34,3 +34,21 @@ Cypress.Commands.add('login', (username,password) =>{
     cy.get('input[name="user_password"]').type(password)
     cy.get('input[name="submit"]').click()
 })
+
+Cypress.Commands.add('login2', (username,password) =>{
+    cy.get('#user_login').clear()
+    cy.get('#user_login').type(username)
+
+    cy.get('input[name="user_password"]').clear()
+    cy.get('input[name="user_password"]').type(password)
+    cy.get('input[name="submit"]').click()
+})
+Cypress.Commands.add('paybills', (amt,date,descr)=>{
+    cy.get('#sp_payee').select('Bank of America')
+    cy.get('#sp_account').select(2).should('have.value','3')
+    cy.get('#sp_amount').type(amt)
+    cy.get('#sp_date').type(date).type('{enter}')
+    cy.get('#sp_description').type(descr)
+    cy.get('#pay_saved_payees').click()
+    cy.get('#alert_content').should('contain.text','The payment was successfully submitted.')
+})

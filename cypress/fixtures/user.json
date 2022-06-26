@@ -1,4 +1,7 @@
 {
   "username": "username",
-  "password": "password"
+  "password": "password",
+  "amount":"150",
+  "date":"2022-06-26",
+  "description":"pay bills bank america"
 }
